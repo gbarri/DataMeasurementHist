@@ -1,4 +1,4 @@
-package com.reply.labcamp.H2OSpoon.web;
+package com.reply.labcamp.H2OSpoon;
 
 import com.reply.labcamp.H2OSpoon.data.C6H6;
 import com.reply.labcamp.H2OSpoon.data.PTO8;
