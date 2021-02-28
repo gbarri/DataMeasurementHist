@@ -2,6 +2,7 @@ package com.reply.labcamp.H2OSpoon;
 
 import com.reply.labcamp.H2OSpoon.data.C6H6;
 import com.reply.labcamp.H2OSpoon.data.PTO8;
+import io.swagger.v3.oas.annotations.Operation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,16 +31,19 @@ public class Controller {
     PTO8 titania;
 
     @GetMapping("benzene")
+    @Operation(description = "Returns a list of the value of Benzene for the last 48 hours")
     public ResponseEntity<Map<String, Double>> getBenzene48hours(){
         return ResponseEntity.ok(benzene.listBenzeneValues());
     }
 
-    @GetMapping("titania")
+    @GetMapping("titanium")
+    @Operation(description = "Returns a list of the value of Titanium for the last 48 hours")
     public ResponseEntity<Map<String, Double>> getTitania48Hours(){
         return ResponseEntity.ok(titania.litsOtherValues());
     }
 
     @GetMapping("benzene/{lagi}")
+    @Operation(description = "Returns the value of Benzene measured lagi hours ago")
     public ResponseEntity<Double> getBenzeneLag(@PathVariable("lagi") String lagi){
         Map<String, Double> map = benzene.listBenzeneValues();
         logger.debug(map.toString());
@@ -51,7 +55,8 @@ public class Controller {
         }
     }
 
-    @GetMapping("titania/{lagi}")
+    @GetMapping("titanium/{lagi}")
+    @Operation(description = "Returns the value of Titanium measured lagi hours ago")
     public ResponseEntity<Double> getTitaniaLag(@PathParam("lagi") String lagNumber){
         Map<String, Double> map = titania.litsOtherValues();
         String key = "lag"+lagNumber;
