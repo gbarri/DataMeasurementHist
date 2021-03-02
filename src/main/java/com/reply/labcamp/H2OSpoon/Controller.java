@@ -57,7 +57,7 @@ public class Controller {
 
     @GetMapping("titanium/{lagi}")
     @Operation(description = "Returns the value of Titanium measured lagi hours ago")
-    public ResponseEntity<Double> getTitaniaLag(@PathParam("lagi") String lagNumber){
+    public ResponseEntity<Double> getTitaniumLag(@PathVariable("lagi") String lagNumber){
         Map<String, Double> map = titania.litsOtherValues();
         String key = "lag"+lagNumber;
         if(map.containsKey(key)){
